@@ -241,7 +241,6 @@ docker restart <container_name>
 Example:
 
 ```
-docker exec <container_name> apk update
 docker exec <container_name> apk update #do this once.
 docker exec <container_name> apk add php-soap
 docker restart <container_name>
