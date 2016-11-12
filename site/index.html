@@ -293,7 +293,7 @@ define('WP_SITEURL','http://etopian.com');
 
 <h2 id="mail">Mail</h2>
 <p>Mail is not routed by the container, you must use an SMTP plugin or Mailgun or AWS SES to route your site's email.</p>
-<p>Mailgun works fine but the test on the WP mailgun plugin to see if it is working does not because it does not correctly set the e-mail address before attempting to send an e-mail</p>
+<p>Mailgun WP Plugin works fine in the container but the test to see if it is working will fail because it does not correctly set the e-mail address before attempting to send an e-mail. Simply ignore the error, and test the mail from your actual site to make sure it's working.</p>
 <ul>
 <li><a href="https://wordpress.org/plugins/mailgun/">https://wordpress.org/plugins/mailgun/</a> (recommended)</li>
 <li>https://wordpress.org/plugins/wp-ses/</li>
@@ -536,7 +536,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 12:31:45
+Last Updated UTC : 2016-11-12 12:33:15
 
 
 -->
