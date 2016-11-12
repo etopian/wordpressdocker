@@ -142,12 +142,12 @@
         },
         {
             "location": "/docker/Install-Docker-on-Ubuntu/",
-            "text": "Install Docker on Ubuntu 16.04 LTS\n\n\nInstall Docker on your machine.\n\n\nInstall Docker on Ubuntu 14.04 or Ubuntu 14.10\n\n\n$ sudo sh -c \"echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list\"\n$ sudo apt-get update\n$ sudo apt-get install lxc-docker\n\n\n\n\nNow Docker is installed on your Ubuntu box... Time to install WordPress",
+            "text": "Install Docker on Ubuntu 16.04 LTS\n\n\nInstall Docker on Ubuntu 16.04 LTS. Below is a bash script containing a number of commands which will automatically install Docker on your VPS or dedicated server.\n\n\n#!/bin/bash\n\napt-get update\napt-get install -y apt-transport-https ca-certificates\napt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D\necho 'deb https://apt.dockerproject.org/repo ubuntu-xenial main' > /etc/apt/sources.list.d/docker.list\napt-get update\n#apt-cache policy docker-engine\n\n#apt-get update\napt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual\n#apt-get update\napt-get install -y docker-engine\nservice docker start\n\n\n\n\nNow Docker is installed on your Ubuntu box... Time to install WordPress",
             "title": "Install Docker on Ubuntu"
         },
         {
             "location": "/docker/Install-Docker-on-Ubuntu/#install-docker-on-ubuntu-1604-lts",
-            "text": "Install Docker on your machine.  Install Docker on Ubuntu 14.04 or Ubuntu 14.10  $ sudo sh -c \"echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list\"\n$ sudo apt-get update\n$ sudo apt-get install lxc-docker  Now Docker is installed on your Ubuntu box... Time to install WordPress",
+            "text": "Install Docker on Ubuntu 16.04 LTS. Below is a bash script containing a number of commands which will automatically install Docker on your VPS or dedicated server.  #!/bin/bash\n\napt-get update\napt-get install -y apt-transport-https ca-certificates\napt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D\necho 'deb https://apt.dockerproject.org/repo ubuntu-xenial main' > /etc/apt/sources.list.d/docker.list\napt-get update\n#apt-cache policy docker-engine\n\n#apt-get update\napt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual\n#apt-get update\napt-get install -y docker-engine\nservice docker start  Now Docker is installed on your Ubuntu box... Time to install WordPress",
             "title": "Install Docker on Ubuntu 16.04 LTS"
         },
         {
