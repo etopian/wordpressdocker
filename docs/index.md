@@ -141,7 +141,7 @@ define('WP_SITEURL','http://etopian.com');
 ##Mail
 Mail is not routed by the container, you must use an SMTP plugin or Mailgun or AWS SES to route your site's email.
 
-Mailgun works fine but the test on the WP mailgun plugin to see if it is working does not because it does not correctly set the e-mail address before attempting to send an e-mail
+Mailgun WP Plugin works fine in the container but the test to see if it is working will fail because it does not correctly set the e-mail address before attempting to send an e-mail. Simply ignore the error, and test the mail from your actual site to make sure it's working.
 
 * [https://wordpress.org/plugins/mailgun/](https://wordpress.org/plugins/mailgun/) (recommended)
 * https://wordpress.org/plugins/wp-ses/

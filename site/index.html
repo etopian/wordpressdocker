@@ -195,7 +195,7 @@
 <h3 id="security">Security</h3>
 <p>The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See <a href="./docker/Why-use-Docker-with-WordPress">Why use Docker with WordPress</a> for more.</p>
 <h2 id="design-decisions">Design decisions</h2>
-<p>We do not use Docker's volume feature. Instead all files including the MariaDB data directory are mounted directory from the host. All your files are on the host in the /data directory on your host. This helps with backups and in generally is a safe way of dealing with files while dealing with Docker. Docker's volumes feature leaves much to be disired so it is not used. All the NGINX config files are mounted to /etc/nginx on the host for easy editing and management.</p>
+<p>We do not use Docker's volume feature. Instead all files including the MariaDB data directory are mounted directory from the host. All your files are on the host in the /data directory on your host. This helps with backups and in generally is a safe way of dealing with files while dealing with Docker. Docker's volumes feature leaves much to be disired so it is not used. All the NGINX config directories are mounted to /etc/nginx on the host for easy editing and management.</p>
 <h2 id="install-docker">Install Docker</h2>
 <p>First <a href="./docker/Install-Docker-on-Ubuntu/">install Docker</a>. We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS</p>
 <h2 id="prepare-your-wordpress-site">Prepare your WordPress site</h2>
@@ -536,7 +536,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 12:31:28
+Last Updated UTC : 2016-11-12 12:31:45
 
 
 -->
