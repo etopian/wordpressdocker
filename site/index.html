@@ -56,6 +56,8 @@
                 
                     <li><a class="toctree-l4" href="#our-custom-docker-image">Our custom docker image</a></li>
                 
+                    <li><a class="toctree-l4" href="#install-docker">Install Docker</a></li>
+                
                     <li><a class="toctree-l4" href="#mysql-database">MySQL Database</a></li>
                 
                     <li><a class="toctree-l4" href="#configure-wp">Configure WP</a></li>
@@ -177,16 +179,16 @@
               
                 <h1 id="quick-start-manual-provisioning">Quick start, manual provisioning</h1>
 <h2 id="our-custom-docker-image">Our custom docker image</h2>
-<p>First <a href="./docker/Install-Docker-on-Ubuntu/">install Docker</a>. We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS</p>
 <p>The following is a quick tutorial for deploying your site on Docker. It has been tested and works with sites like www.etopian.com. It also supports using an SSL certificate. It uses Alpine Linux for serving the actual site, the beautiful thing is that a site can be served in around 50mb of ram. Using the process below you can deploy multiple WP sites on the same box, at least 10 sites on a 1gb VPS extremely securely as each site lives in its own container.</p>
-<p>We are in the process of developing a CLI to make this process much easier, star this repo:
-https://github.com/etopian/docker-wordpress-cli</p>
 <p>For this demo we are deploying etopian.com, replace that with your custom domain.</p>
 <h3 id="security">Security</h3>
 <p>The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See <a href="./docker/Why-use-Docker-with-WordPress">Why use Docker with WordPress</a> for more.</p>
+<h2 id="install-docker">Install Docker</h2>
+<p>First <a href="./docker/Install-Docker-on-Ubuntu/">install Docker</a>. We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS</p>
 <h3 id="site-files">Site files</h3>
-<p>Site files need to be located in, simply copy the files here:</p>
-<pre><code>#Copy your WP install here, if you don't have one simply download WP and put that here
+<p>Site files need to be located in /data/sites/etopian.com/htdocs, simply copy the files here:</p>
+<pre><code>mkdir -p /data/sites/etopian.com/htdocs
+#Copy your WP install here, if you don't have one simply download WP and put that here
 /data/sites/etopian.com/htdocs
 </code></pre>
 
@@ -503,7 +505,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 11:37:06
+Last Updated UTC : 2016-11-12 11:49:50
 
 
 -->
