@@ -1,4 +1,4 @@
-# Quick start, manual provisioning
+# Deploying Docker on WordPress
 
 ## Introduction
 
