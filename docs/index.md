@@ -13,6 +13,13 @@ The process serving the website, Nginx and PHP-FPM, does not run as root. It's n
 ## Design decisions
 We do not use Docker's volume feature. Instead all files including the MariaDB data directory are mounted directory from the host. All your files are on the host in the /data directory on your host. This helps with backups and in generally is a safe way of dealing with files while dealing with Docker. Docker's volumes feature leaves much to be desired so it is not used. All the NGINX config directories are mounted to /etc/nginx on the host for easy editing and management.
 
+Each WordPress Container runs:
+
+* Nginx
+* PHP-FPM
+
+Currently there is no process manager running in the WordPress container. We have it on our todo list to use s6 as the process manager. The nginx user is enabled on each container so you can bash into the container as the same user as the site, to use wp-cli. This is a minor security risk. Currrently there is no way to directly SSH into the container, you have to go through the host. There are no plans to add SSH to the container, you have to that yourself if that's something you need.
+
 ## Install Docker
 
 First [install Docker](docker/Install-Docker-on-Ubuntu/). We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS
