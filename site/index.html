@@ -279,8 +279,11 @@ define('WP_SITEURL','http://etopian.com');
 </code></pre>
 
 <h2 id="wp-cli">WP-CLI</h2>
-<p>WP-CLI is included in the Alpine Linux image. You need the following option when running the Alpine Linux container to not see the error when trying to use it.</p>
-<pre><code>-e TERM=xterm
+<p>WP-CLI is included in the Alpine Linux image. To use it from inside the container in a safe way.</p>
+<pre><code>docker exec -it &lt;container_name&gt; bash
+su nginx
+cd /DATA
+wp-cli
 </code></pre>
 
 <h2 id="redis">Redis</h2>
@@ -500,7 +503,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 11:33:58
+Last Updated UTC : 2016-11-12 11:37:06
 
 
 -->

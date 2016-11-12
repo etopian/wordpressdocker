@@ -1,22 +1,23 @@
 # Quick start, manual provisioning
 ## Our custom docker image
-First [install Docker](docker/Install-Docker-on-Ubuntu/). We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS
 
 The following is a quick tutorial for deploying your site on Docker. It has been tested and works with sites like www.etopian.com. It also supports using an SSL certificate. It uses Alpine Linux for serving the actual site, the beautiful thing is that a site can be served in around 50mb of ram. Using the process below you can deploy multiple WP sites on the same box, at least 10 sites on a 1gb VPS extremely securely as each site lives in its own container.
-
-We are in the process of developing a CLI to make this process much easier, star this repo:
-https://github.com/etopian/docker-wordpress-cli
 
 For this demo we are deploying etopian.com, replace that with your custom domain.
 
 ###Security
 The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See [Why use Docker with WordPress](docker/Why-use-Docker-with-WordPress) for more.
 
+## Install Docker
+
+First [install Docker](docker/Install-Docker-on-Ubuntu/). We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS
+
 ###Site files
 
-Site files need to be located in, simply copy the files here:
+Site files need to be located in /data/sites/etopian.com/htdocs, simply copy the files here:
 
 ```
+mkdir -p /data/sites/etopian.com/htdocs
 #Copy your WP install here, if you don't have one simply download WP and put that here
 /data/sites/etopian.com/htdocs
 ```
