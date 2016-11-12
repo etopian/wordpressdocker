@@ -134,10 +134,13 @@ docker logs nginx
 
 ##WP-CLI
 
-WP-CLI is included in the Alpine Linux image. You need the following option when running the Alpine Linux container to not see the error when trying to use it.
+WP-CLI is included in the Alpine Linux image. To use it from inside the container in a safe way.
 
 ```
--e TERM=xterm
+docker exec -it <container_name> bash
+su nginx
+cd /DATA
+wp-cli
 ```
 
 ## Redis

@@ -68,6 +68,12 @@
                 
                     <li><a class="toctree-l4" href="#redis">Redis</a></li>
                 
+                    <li><a class="toctree-l4" href="#modifying-the-image">Modifying the image</a></li>
+                
+                    <li><a class="toctree-l4" href="#adding-new-php-modules">Adding new PHP modules</a></li>
+                
+                    <li><a class="toctree-l4" href="#list-of-php-modules">List of PHP Modules</a></li>
+                
                     <li><a class="toctree-l4" href="#firewall">Firewall</a></li>
                 
             
@@ -111,7 +117,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="docker/Why-use-docker-with-WordPress/">Why use docker with WordPress</a>
+        <a class="" href="docker/Why-use-Docker-with-WordPress/">Why use Docker with WordPress</a>
         
     </li>
 
@@ -171,19 +177,13 @@
               
                 <h1 id="quick-start-manual-provisioning">Quick start, manual provisioning</h1>
 <h2 id="our-custom-docker-image">Our custom docker image</h2>
-<p>First install Docker... see above for a link. We are using Docker 1.9.1. We are running Ubuntu 14.04.2 LTS</p>
+<p>First <a href="./docker/Install-Docker-on-Ubuntu/">install Docker</a>. We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS</p>
 <p>The following is a quick tutorial for deploying your site on Docker. It has been tested and works with sites like www.etopian.com. It also supports using an SSL certificate. It uses Alpine Linux for serving the actual site, the beautiful thing is that a site can be served in around 50mb of ram. Using the process below you can deploy multiple WP sites on the same box, at least 10 sites on a 1gb VPS extremely securely as each site lives in its own container.</p>
 <p>We are in the process of developing a CLI to make this process much easier, star this repo:
 https://github.com/etopian/docker-wordpress-cli</p>
 <p>For this demo we are deploying etopian.com, replace that with your custom domain.</p>
 <h3 id="security">Security</h3>
-<p>The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root.</p>
-<h3 id="ip-address-fix">IP address fix</h3>
-<p>Once you finish this you will find that logs command does not show the correct IP address. In order to fix this you must do the following:</p>
-<p>edit /etc/default/docker</p>
-<pre><code class="bash">DOCKER_OPTS=&quot;--userland-proxy=false --storage-driver=aufs&quot;
-</code></pre>
-
+<p>The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See <a href="./docker/Why-use-Docker-with-WordPress">Why use Docker with WordPress</a> for more.</p>
 <h3 id="site-files">Site files</h3>
 <p>Site files need to be located in, simply copy the files here:</p>
 <pre><code>#Copy your WP install here, if you don't have one simply download WP and put that here
@@ -195,7 +195,7 @@ https://github.com/etopian/docker-wordpress-cli</p>
 <pre><code>chown -R 100:101 htdocs/
 </code></pre>
 
-<h3 id="nginx-proxy">NGINX Proxy</h3>
+<h3 id="run-nginx-proxy-container">Run NGINX Proxy Container</h3>
 <p>This sits in front of all of your sites at port 80 serving all your sites.</p>
 <pre><code>docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
 </code></pre>
@@ -299,28 +299,35 @@ define('WP_CACHE_KEY_SALT', DB_NAME);
 <p>Go to your site's dashboard and activate the Redis object cache.</p>
 <p>Settings &gt; Redis and click the button to activate.</p>
 <p><img alt="wp_redis.png" src="http://assets.dockerwordpress.com.s3.amazonaws.com/images/wp_redis.png" /></p>
-<h3 id="adding-new-php-modules-to-a-certain-site">Adding new PHP modules to a certain site</h3>
+<h2 id="modifying-the-image">Modifying the image</h2>
 <p>The image for Alpine Linux running PHP may be found here:
 https://github.com/etopian/alpine-php-wordpress</p>
+<p>You may fork it and modify it to add additional modules and what not.</p>
+<h2 id="adding-new-php-modules">Adding new PHP modules</h2>
+<blockquote>
 <p>The following modules are included with the image etopian/alpine-php-wordpress</p>
-<pre><code>    php-fpm php-json php-zlib php-xml php-pdo php-phar php-openssl \
-    php-pdo_mysql php-mysqli \
-    php-gd php-iconv php-mcrypt \
-    php-mysql php-curl php-opcache php-ctype php-apcu \
-    php-intl php-bcmath
+</blockquote>
+<pre><code>    php7-fpm php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
+    php7-pdo_mysql php7-mysqli php7-session \
+    php7-gd php7-iconv php7-mcrypt \
+    php7-curl php7-opcache php7-ctype php7-apcu \
+    php7-intl php7-bcmath php7-dom php7-xmlreader
 </code></pre>
 
-<h3 id="php-modules">PHP Modules</h3>
-<h4 id="list-of-available-modules-in-alpine-linux-not-all-these-are-installed">List of available modules in Alpine Linux, not all these are installed.</h4>
-<h5 id="in-order-to-install-a-php-module-do-leave-out-the-version-number-ie-5611-r0">In order to install a php module do, (leave out the version number i.e. -5.6.11-r0</h5>
-<pre><code>docker exec &lt;image_id&gt; apk add &lt;pkg_name&gt;
-docker restart &lt;image_name&gt;
+<h2 id="list-of-php-modules">List of PHP Modules</h2>
+<blockquote>
+<p>List of available modules in Alpine Linux, not all these are installed.</p>
+<p>In order to install a php module do, (leave out the version number i.e. -5.7.0.13-r0</p>
+</blockquote>
+<pre><code>docker exec &lt;container_name&gt; apk add &lt;pkg_name&gt;
+docker restart &lt;container_name&gt;
+
 </code></pre>
 
 <p>Example:</p>
-<pre><code>docker exec &lt;image_id&gt; apk update #do this once.
-docker exec &lt;image_id&gt; apk add php-soap
-docker restart &lt;image_name&gt;
+<pre><code>docker exec &lt;container_name&gt; apk update #do this once.
+docker exec &lt;container_name&gt; apk add php-soap
+docker restart &lt;container_name&gt;
 </code></pre>
 
 <pre><code>php7-intl-7.0.13-r0
@@ -443,7 +450,7 @@ OPEN_ICMP=1
 
 <h3 id="have-issues-comments-or-questions-httpsgithubcometopiandocker-wordpressissues">Have issues, comments or questions: https://github.com/etopian/docker-wordpress/issues</h3>
 <hr />
-<p>Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. dockerwordpress.com WordPress Tutorial is not affiliated with Docker, Inc.</p>
+<p>Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. wordpressdocker.com Unofficial WordPress Docker Tutorial is not affiliated with Docker, Inc.</p>
               
             </div>
           </div>
@@ -493,7 +500,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 11:13:06
+Last Updated UTC : 2016-11-12 11:33:58
 
 
 -->
