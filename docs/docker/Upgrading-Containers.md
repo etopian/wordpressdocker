@@ -1,4 +1,4 @@
-# Upgrading Containers
+# Upgrading WordPress Docker Containers
 
 One of the key benefits of using Docker is the fact that it makes deployment of software eaiser. It packs everything you need into an container and ships that entire container with the entire enviornment. This makes deploying more predictable than the old method of just pushing the files and then keeping the operating system up to date in hopes that everything keeps working.
 
