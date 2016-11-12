@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <title>Home - WordPress Docker - Unofficial Guide</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> WordPress Docker - Unofficial Guide</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href=".">Home</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#quick-start-manual-provisioning">Quick start, manual provisioning</a></li>
+                
+                    <li><a class="toctree-l4" href="#our-custom-docker-image">Our custom docker image</a></li>
+                
+                    <li><a class="toctree-l4" href="#mysql-database">MySQL Database</a></li>
+                
+                    <li><a class="toctree-l4" href="#configure-wp">Configure WP</a></li>
+                
+                    <li><a class="toctree-l4" href="#mail">Mail</a></li>
+                
+                    <li><a class="toctree-l4" href="#how-can-i-see-the-logs">How can I see the logs?</a></li>
+                
+                    <li><a class="toctree-l4" href="#wp-cli">WP-CLI</a></li>
+                
+                    <li><a class="toctree-l4" href="#redis">Redis</a></li>
+                
+                    <li><a class="toctree-l4" href="#firewall">Firewall</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="mailgun-ssmtp/">Mailgun ssmtp</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Docker</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="docker/Install-Docker-on-Ubuntu/">Install Docker on Ubuntu</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="docker/Upgrading-Containers/">Upgrading Containers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="docker/What-is-Docker/">What is Docker</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="docker/Why-use-docker-with-WordPress/">Why use docker with WordPress</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Links</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="links/">Home</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">WordPress Docker - Unofficial Guide</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/etopian/wordpressdocker-src/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="quick-start-manual-provisioning">Quick start, manual provisioning</h1>
+<h2 id="our-custom-docker-image">Our custom docker image</h2>
+<p>First install Docker... see above for a link. We are using Docker 1.9.1. We are running Ubuntu 14.04.2 LTS</p>
+<p>The following is a quick tutorial for deploying your site on Docker. It has been tested and works with sites like www.etopian.com. It also supports using an SSL certificate. It uses Alpine Linux for serving the actual site, the beautiful thing is that a site can be served in around 50mb of ram. Using the process below you can deploy multiple WP sites on the same box, at least 10 sites on a 1gb VPS extremely securely as each site lives in its own container.</p>
+<p>We are in the process of developing a CLI to make this process much easier, star this repo:
+https://github.com/etopian/docker-wordpress-cli</p>
+<p>For this demo we are deploying etopian.com, replace that with your custom domain.</p>
+<h3 id="security">Security</h3>
+<p>The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root.</p>
+<h3 id="ip-address-fix">IP address fix</h3>
+<p>Once you finish this you will find that logs command does not show the correct IP address. In order to fix this you must do the following:</p>
+<p>edit /etc/default/docker</p>
+<pre><code class="bash">DOCKER_OPTS=&quot;--userland-proxy=false --storage-driver=aufs&quot;
+</code></pre>
+
+<h3 id="site-files">Site files</h3>
+<p>Site files need to be located in, simply copy the files here:</p>
+<pre><code>#copy your WP install here, if you don't have one simply download WP and put that here
+/data/sites/etopian.com/htdocs
+</code></pre>
+
+<h3 id="file-ownership">File ownership</h3>
+<p>The site on your host needs proper file permissions. Go to your site's folder and type the following:</p>
+<pre><code>chown -R 100:101 htdocs/
+</code></pre>
+
+<h3 id="nginx-proxy">NGinx Proxy</h3>
+<p>This sits in front of all of your sites at port 80 serving all your sites.</p>
+<pre><code>docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
+</code></pre>
+
+<h3 id="php-fpm-nginx">PHP-FPM + Nginx</h3>
+<p>Each site runs in its own container with PHP-FPM and Nginx instance.</p>
+<pre><code>docker run -d --name etopian_com -e VIRTUAL_HOST=www.etopian.com,etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
+</code></pre>
+
+<h2 id="mysql-database">MySQL Database</h2>
+<pre><code>apt-get update &amp;&amp; apt-get install mysql-client-core-5.6
+
+docker run -d --name mariadb -p 172.17.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=myROOTPASSOWRD -v /data/mysql:/var/lib/mysql mariadb
+
+#login to mariadb
+mysql -uroot -pmyROOTPASSOWRD -h 172.17.0.1 -P 3306
+
+#create the db in mariadb
+CREATE DATABASE etopian_com;
+CREATE USER 'etopian_com'@'%' IDENTIFIED BY 'mydbpass';
+GRANT ALL PRIVILEGES ON  etopian_com.* TO 'etopian_com'@'%';
+
+#if you have a db, import it. if not then configure wp and install it using the interface.
+mysql -uroot -pmyROOTPASSOWRD -h 172.17.0.1 etopian_com &lt; mydatabase.mysql
+</code></pre>
+
+<h2 id="configure-wp">Configure WP</h2>
+<h3 id="wp-configphp">wp-config.php</h3>
+<p>If you need to change the domain of the site put the follow in wp-config.php of your site.</p>
+<pre><code class="php">/** The name of the database for WordPress **/
+define('DB_NAME', 'etopian_com&quot;);
+
+/** MySQL database username **/
+define('DB_USER', 'etopian_com');
+
+/** MySQL database password **/
+define('DB_PASSWORD', 'mydbpass');
+
+/** MySQL hostname **/
+define('DB_HOST', '172.17.0.1');
+</code></pre>
+
+<p>Your site should be working as long as the DNS entries are properly set.</p>
+<h3 id="wp-configphp-ssl">wp-config.php - SSL</h3>
+<p>Put your SSL certificate here, with the VIRTUAL_HOST as the file name: </p>
+<pre><code>/etc/nginx/certs
+etopian.com.crt  etopian.com.csr  etopian.com.key
+</code></pre>
+
+<p>If you use SSL you need to run your container with the filename of the certificate you are using. So rm the existing container and recreate a new one with the following environmental variable.</p>
+<pre><code> -e CERT_NAME=etopian.com
+</code></pre>
+
+<p>edit wp-config.php in your site's htdocs directory.</p>
+<pre><code>define('WP_HOME','https://etopian.com');
+define('WP_SITEURL','https://etopian.com');
+  define('FORCE_SSL_ADMIN', true);
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')
+       $_SERVER['HTTPS']='on';
+</code></pre>
+
+<h3 id="wp-configphp_1">wp-config.php</h3>
+<p>If you need to change the domain of the site put the follow in wp-config.php of your site.</p>
+<pre><code>define('WP_HOME','http://etopian.com');
+define('WP_SITEURL','http://etopian.com');
+</code></pre>
+
+<h2 id="mail">Mail</h2>
+<p>Mail is not routed by the container, you must use an SMTP plugin or Mailgun or AWS SES to route your site's email.</p>
+<p>Mailgun works fine but the test on the WP mailgun plugin to see if it is working does not because it does not correctly set the e-mail address before attempting to send an e-mail</p>
+<ul>
+<li><a href="https://wordpress.org/plugins/mailgun/">https://wordpress.org/plugins/mailgun/</a> (recommended)</li>
+<li>https://wordpress.org/plugins/wp-ses/</li>
+<li>https://wordpress.org/plugins/wp-smtp/</li>
+<li>https://wordpress.org/plugins/easy-wp-smtp/</li>
+<li>https://wordpress.org/plugins/wp-mail-bank/</li>
+</ul>
+<h2 id="how-can-i-see-the-logs">How can I see the logs?</h2>
+<p>Currently, working on improving this:</p>
+<pre><code>docker logs nginx
+</code></pre>
+
+<h2 id="wp-cli">WP-CLI</h2>
+<p>WP-CLI is included in the Alpine Linux image. You need the following option when running the Alpine Linux container to not see the error when trying to use it.</p>
+<pre><code>-e TERM=xterm
+</code></pre>
+
+<h2 id="redis">Redis</h2>
+<p>It is possible to speed up your site with Redis... You need enough memory to support Redis obviously.</p>
+<p>You need the following WP plugin:
+https://wordpress.org/plugins/redis-cache/</p>
+<p>Put this in your wp-config.php below the DB_HOST and DB_NAME entries.</p>
+<pre><code>define('WP_REDIS_HOST', DB_HOST);
+define('WP_CACHE_KEY_SALT', DB_NAME); 
+</code></pre>
+
+<p>Deploy Redis</p>
+<pre><code>docker run --name redis -p 172.17.0.1:6379:6379 redis
+</code></pre>
+
+<p>Go to your site's dashboard and activate the Redis object cache.</p>
+<p>Settings &gt; Redis and click the button to activate.</p>
+<p><img alt="wp_redis.png" src="http://assets.dockerwordpress.com.s3.amazonaws.com/images/wp_redis.png" /></p>
+<h3 id="adding-new-php-modules-to-a-certain-site">Adding new PHP modules to a certain site</h3>
+<p>The image for Alpine Linux running PHP may be found here:
+https://github.com/etopian/alpine-php-wordpress</p>
+<p>The following modules are included with the image etopian/alpine-php-wordpress</p>
+<pre><code>    php-fpm php-json php-zlib php-xml php-pdo php-phar php-openssl \
+    php-pdo_mysql php-mysqli \
+    php-gd php-iconv php-mcrypt \
+    php-mysql php-curl php-opcache php-ctype php-apcu \
+    php-intl php-bcmath
+</code></pre>
+
+<h3 id="kernel-upgrade">Kernel Upgrade</h3>
+<p>The kernel upgrade to 3.19 on Ubuntu 14.04 is not recommend/possible. It will cause your Docker instance to fail. The reason is that 3.19 kernel does not have AUFS. Docker is switching to another file provider, but for now stick with the 3.13 kernel. Downgrade to 3.13 if you have upgraded and Docker won't start.</p>
+<h3 id="log-rotate">Log Rotate</h3>
+<h3 id="php-modules">PHP Modules</h3>
+<h4 id="list-of-available-modules-in-alpine-linux-not-all-these-are-installed">List of available modules in Alpine Linux, not all these are installed.</h4>
+<h5 id="in-order-to-install-a-php-module-do-leave-out-the-version-number-ie-5611-r0">In order to install a php module do, (leave out the version number i.e. -5.6.11-r0</h5>
+<pre><code>docker exec &lt;image_id&gt; apk add &lt;pkg_name&gt;
+docker restart &lt;image_name&gt;
+</code></pre>
+
+<p>Example:</p>
+<pre><code>docker exec &lt;image_id&gt; apk update #do this once.
+docker exec &lt;image_id&gt; apk add php-soap
+docker restart &lt;image_name&gt;
+</code></pre>
+
+<p>php-soap-5.6.11-r0</p>
+<p>php-openssl-5.6.11-r0</p>
+<p>php-gmp-5.6.11-r0</p>
+<p>php-phar-5.6.11-r0</p>
+<p>php-embed-5.6.11-r0</p>
+<p>php-pdo_odbc-5.6.11-r0</p>
+<p>php-mysqli-5.6.11-r0</p>
+<p>php-common-5.6.11-r0</p>
+<p>php-ctype-5.6.11-r0</p>
+<p>php-fpm-5.6.11-r0</p>
+<p>php-shmop-5.6.11-r0</p>
+<p>php-xsl-5.6.11-r0</p>
+<p>php-curl-5.6.11-r0</p>
+<p>php-pear-net_idna2-0.1.1-r0</p>
+<p>php-json-5.6.11-r0</p>
+<p>php-dom-5.6.11-r0</p>
+<p>php-pspell-5.6.11-r0</p>
+<p>php-sockets-5.6.11-r0</p>
+<p>php-pear-mdb2-driver-pgsql-2.5.0b5-r0</p>
+<p>php-pdo-5.6.11-r0</p>
+<p>phpldapadmin-1.2.3-r3</p>
+<p>php-pear-5.6.11-r0</p>
+<p>php-phpmailer-5.2.0-r0</p>
+<p>phpmyadmin-doc-4.4.10-r0</p>
+<p>php-cli-5.6.11-r0</p>
+<p>php-zip-5.6.11-r0</p>
+<p>php-pgsql-5.6.11-r0</p>
+<p>php-sysvshm-5.6.11-r0</p>
+<p>php-imap-5.6.11-r0</p>
+<p>php-intl-5.6.11-r0</p>
+<p>php-embed-5.6.11-r0</p>
+<p>php-zlib-5.6.11-r0</p>
+<p>php-phpdbg-5.6.11-r0</p>
+<p>php-sysvsem-5.6.11-r0</p>
+<p>phpmyadmin-4.4.10-r0</p>
+<p>php-mysql-5.6.11-r0</p>
+<p>php-sqlite3-5.6.11-r0</p>
+<p>php-cgi-5.6.11-r0</p>
+<p>php-apcu-4.0.7-r1</p>
+<p>php-snmp-5.6.11-r0</p>
+<p>php-pdo_pgsql-5.6.11-r0</p>
+<p>php-xml-5.6.11-r0</p>
+<p>php-wddx-5.6.11-r0</p>
+<p>php-sysvmsg-5.6.11-r0</p>
+<p>php-enchant-5.6.11-r0</p>
+<p>php-bcmath-5.6.11-r0</p>
+<p>php-pear-mail_mime-1.8.9-r0</p>
+<p>php-apache2-5.6.11-r0</p>
+<p>php-gd-5.6.11-r0</p>
+<p>php-pear-mdb2-driver-sqlite-2.5.0b5-r0</p>
+<p>php-xcache-3.2.0-r1</p>
+<p>php-odbc-5.6.11-r0</p>
+<p>php-mailparse-2.1.6-r2</p>
+<p>php-ftp-5.6.11-r0</p>
+<p>perl-php-serialization-0.34-r1</p>
+<p>php-exif-5.6.11-r0</p>
+<p>php-pdo_mysql-5.6.11-r0</p>
+<p>php-ldap-5.6.11-r0</p>
+<p>php-pear-mdb2-2.5.0b5-r0</p>
+<p>php-dbg-5.6.11-r0</p>
+<p>php-pear-net_smtp-1.6.2-r0</p>
+<p>php-opcache-5.6.11-r0</p>
+<p>php-pdo_sqlite-5.6.11-r0</p>
+<p>php-posix-5.6.11-r0</p>
+<p>php-dba-5.6.11-r0</p>
+<p>php-iconv-5.6.11-r0</p>
+<p>php-gettext-5.6.11-r0</p>
+<p>php-xmlreader-5.6.11-r0</p>
+<p>php-5.6.11-r0</p>
+<p>php-xmlrpc-5.6.11-r0</p>
+<p>php-bz2-5.6.11-r0</p>
+<p>perl-php-serialization-doc-0.34-r1</p>
+<p>php-mcrypt-5.6.11-r0</p>
+<p>php-memcache-3.0.8-r3</p>
+<p>xapian-bindings-php-1.2.21-r1</p>
+<p>php-pdo_dblib-5.6.11-r0</p>
+<p>php-phalcon-2.0.3-r0</p>
+<p>php-dev-5.6.11-r0</p>
+<p>php-doc-5.6.11-r0</p>
+<p>php-mssql-5.6.11-r0</p>
+<p>php-calendar-5.6.11-r0</p>
+<p>php-pear-mdb2-driver-mysqli-2.5.0b5-r0</p>
+<p>php-pear-mdb2-driver-mysql-2.5.0b5-r0</p>
+<h2 id="firewall">Firewall</h2>
+<p>You should also deploy a firewall on your box. However, it's very easy to lock yourself out of your box, so I will not give you exact instructions on how to do it. The following is what I use for my box using arno-iptables-firewall.</p>
+<p>Once the firewall is in place, notice when the box reboots, Docker might not start in the right order and therefore the iptables rules it might need might not be initialized and due to this things might not work. Simply restart the Docker service:</p>
+<pre><code>service docker restart
+</code></pre>
+
+<pre><code>#######################################################################
+# Feel free to edit this file.  However, be aware that debconf writes #
+# to (and reads from) this file too.  In case of doubt, only use      #
+# 'dpkg-reconfigure -plow arno-iptables-firewall' to edit this file.  #
+# If you really don't want to use debconf, or if you have specific    #
+# needs, you're likely better off using placing an additional         #
+# configuration snippet into/etc/arno-iptables-firewall/conf.d/.      #
+# Also see README.Debian.                                             #
+#######################################################################
+
+
+EXT_IF=&quot;eth0&quot;
+EXT_IF_DHCP_IP=1
+OPEN_TCP=&quot;22 80 443&quot;
+OPEN_UDP=&quot;&quot;
+INT_IF=&quot;docker0&quot;
+NAT=1
+INTERNAL_NET=&quot;172.17.0.1/16&quot;
+NAT_INTERNAL_NET=&quot;192.168.1.0/24 192.168.2.0/24 172.17.0.1/16&quot;
+OPEN_ICMP=1
+</code></pre>
+
+<h3 id="have-issues-comments-or-questions-httpsgithubcometopiandocker-wordpressissues">Have issues, comments or questions: https://github.com/etopian/docker-wordpress/issues</h3>
+<hr />
+<p>Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. dockerwordpress.com WordPress Tutorial is not affiliated with Docker, Inc.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mailgun-ssmtp/" class="btn btn-neutral float-right" title="Mailgun ssmtp">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/etopian/wordpressdocker-src" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="mailgun-ssmtp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="./js/theme.js"></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.16.0
+Build Date UTC : 2016-11-12 10:03:55
+-->

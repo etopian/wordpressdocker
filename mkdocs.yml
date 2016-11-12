@@ -1,0 +1,4 @@
+site_name: WordPress Docker - Unofficial Guide
+theme: readthedocs
+repo_url: https://github.com/etopian/wordpressdocker-src
+edit_uri: edit/master/docs/
