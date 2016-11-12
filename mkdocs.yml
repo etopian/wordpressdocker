@@ -2,3 +2,4 @@ site_name: WordPress on Docker - An Unofficial Guide
 theme: readthedocs
 repo_url: https://github.com/etopian/wordpressdocker
 edit_uri: edit/master/docs/
+google_analytics: ['UA-63062106-4', 'www.wordpressdocker.com']

@@ -64,7 +64,7 @@
                 
                     <li><a class="toctree-l4" href="#prepare-your-wordpress-site">Prepare your WordPress site</a></li>
                 
-                    <li><a class="toctree-l4" href="#run-nginx-proxy-container">Run NGINX Proxy Container</a></li>
+                    <li><a class="toctree-l4" href="#run-nginx-reverse-proxy-container">Run NGINX Reverse Proxy Container</a></li>
                 
                     <li><a class="toctree-l4" href="#run-wordpress-container">Run WordPress Container</a></li>
                 
@@ -210,8 +210,8 @@
 <pre><code>chown -R 100:101 htdocs/
 </code></pre>
 
-<h2 id="run-nginx-proxy-container">Run NGINX Proxy Container</h2>
-<p>This sits in front of all of your sites at port 80 serving all your sites.</p>
+<h2 id="run-nginx-reverse-proxy-container">Run NGINX Reverse Proxy Container</h2>
+<p>This sits in front of all of your sites at port 80 and 443 serving all your sites. It was automatically reconfigure itself and reload itself when you create a new WordPress site container.</p>
 <pre><code>docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
 </code></pre>
 
@@ -536,7 +536,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 12:34:19
+Last Updated UTC : 2016-11-12 12:48:41
 
 
 -->
