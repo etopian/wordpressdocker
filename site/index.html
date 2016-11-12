@@ -60,7 +60,13 @@
                 
                     <li><a class="toctree-l4" href="#install-docker">Install Docker</a></li>
                 
-                    <li><a class="toctree-l4" href="#mysqlmariadb-database">MySQL/MariaDB Database</a></li>
+                    <li><a class="toctree-l4" href="#prepare-your-wordpress-site">Prepare your WordPress site</a></li>
+                
+                    <li><a class="toctree-l4" href="#run-nginx-proxy-container">Run NGINX Proxy Container</a></li>
+                
+                    <li><a class="toctree-l4" href="#run-wordpress-container">Run WordPress Container</a></li>
+                
+                    <li><a class="toctree-l4" href="#run-mysqlmariadb-database-container">Run MySQL/MariaDB Database Container</a></li>
                 
                     <li><a class="toctree-l4" href="#configure-wp">Configure WP</a></li>
                 
@@ -188,7 +194,7 @@
 <p>The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See <a href="./docker/Why-use-Docker-with-WordPress">Why use Docker with WordPress</a> for more.</p>
 <h2 id="install-docker">Install Docker</h2>
 <p>First <a href="./docker/Install-Docker-on-Ubuntu/">install Docker</a>. We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS</p>
-<h3 id="site-files">Site files</h3>
+<h2 id="prepare-your-wordpress-site">Prepare your WordPress site</h2>
 <p>Site files need to be located in /data/sites/etopian.com/htdocs, simply copy the files here:</p>
 <pre><code>mkdir -p /data/sites/etopian.com/htdocs
 #Copy your WP install here, if you don't have one simply download WP and put that here
@@ -200,17 +206,17 @@
 <pre><code>chown -R 100:101 htdocs/
 </code></pre>
 
-<h3 id="run-nginx-proxy-container">Run NGINX Proxy Container</h3>
+<h2 id="run-nginx-proxy-container">Run NGINX Proxy Container</h2>
 <p>This sits in front of all of your sites at port 80 serving all your sites.</p>
 <pre><code>docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
 </code></pre>
 
-<h3 id="php-fpm-nginx">PHP-FPM + Nginx</h3>
+<h2 id="run-wordpress-container">Run WordPress Container</h2>
 <p>Each site runs in its own container with PHP-FPM and Nginx instance.</p>
 <pre><code>docker run -d --name etopian_com -e VIRTUAL_HOST=www.etopian.com,etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
 </code></pre>
 
-<h2 id="mysqlmariadb-database">MySQL/MariaDB Database</h2>
+<h2 id="run-mysqlmariadb-database-container">Run MySQL/MariaDB Database Container</h2>
 <p>In order to access MySQL/MariaDB running in a container you need a MySQL client on your host. You can alternatively using the client in the container, described below.</p>
 <h3 id="install-mariadb">Install MariaDB</h3>
 <pre><code>docker run -d --name mariadb -p 172.17.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=myROOTPASSOWRD -v /data/mysql:/var/lib/mysql mariadb
@@ -521,7 +527,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 12:05:00
+Last Updated UTC : 2016-11-12 12:20:01
 
 
 -->

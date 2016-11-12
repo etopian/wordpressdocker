@@ -10,6 +10,9 @@ The following is a quick tutorial for deploying your site on Docker. It has been
 ###Security
 The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See [Why use Docker with WordPress](docker/Why-use-Docker-with-WordPress) for more.
 
+## Design decisions
+We do not use Docker's volume feature. Instead all files including the MariaDB data directory are mounted directory from the host. All your files are on the host in the /data directory on your host. This helps with backups and in generally is a safe way of dealing with files while dealing with Docker. Docker's volumes feature leaves much to be disired so it is not used.
+
 ## Install Docker
 
 First [install Docker](docker/Install-Docker-on-Ubuntu/). We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS
@@ -146,10 +149,18 @@ Mailgun works fine but the test on the WP mailgun plugin to see if it is working
 * https://wordpress.org/plugins/easy-wp-smtp/
 * https://wordpress.org/plugins/wp-mail-bank/
 
-##How can I see the logs?
-Currently, working on improving this:
+##Logs
+You can view the logs of all you sites using the NGINX proxy container.
+
 ```
 docker logs nginx
+```
+
+If you want to view logs for an individual site, they are in the logs directory on your host.
+
+```
+cd /data/sites/etopian.com/logs
+cat access.log
 ```
 
 ##WP-CLI
