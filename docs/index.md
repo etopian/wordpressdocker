@@ -34,8 +34,8 @@ The site on your host needs proper file permissions. Go to your site's folder an
 chown -R 100:101 htdocs/
 ```
 
-## Run NGINX Proxy Container
-This sits in front of all of your sites at port 80 serving all your sites.
+## Run NGINX Reverse Proxy Container
+This sits in front of all of your sites at port 80 and 443 serving all your sites. It was automatically reconfigure itself and reload itself when you create a new WordPress site container.
 
 ```
 docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
