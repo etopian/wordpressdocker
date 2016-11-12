@@ -11,7 +11,7 @@ The following is a quick tutorial for deploying your site on Docker. It has been
 The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See [Why use Docker with WordPress](docker/Why-use-Docker-with-WordPress) for more.
 
 ## Design decisions
-We do not use Docker's volume feature. Instead all files including the MariaDB data directory are mounted directory from the host. All your files are on the host in the /data directory on your host. This helps with backups and in generally is a safe way of dealing with files while dealing with Docker. Docker's volumes feature leaves much to be disired so it is not used. All the NGINX config files are mounted to /etc/nginx on the host for easy editing and management.
+We do not use Docker's volume feature. Instead all files including the MariaDB data directory are mounted directory from the host. All your files are on the host in the /data directory on your host. This helps with backups and in generally is a safe way of dealing with files while dealing with Docker. Docker's volumes feature leaves much to be disired so it is not used. All the NGINX config directories are mounted to /etc/nginx on the host for easy editing and management.
 
 ## Install Docker
 
