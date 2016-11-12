@@ -14,7 +14,7 @@ The process serving the website, Nginx and PHP-FPM, does not run as root. It's n
 
 First [install Docker](docker/Install-Docker-on-Ubuntu/). We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS
 
-###Site files
+##Prepare your WordPress site
 
 Site files need to be located in /data/sites/etopian.com/htdocs, simply copy the files here:
 
@@ -24,7 +24,6 @@ mkdir -p /data/sites/etopian.com/htdocs
 /data/sites/etopian.com/htdocs
 ```
 
-
 ### File ownership
 The site on your host needs proper file permissions. Go to your site's folder and type the following:
 
@@ -32,20 +31,20 @@ The site on your host needs proper file permissions. Go to your site's folder an
 chown -R 100:101 htdocs/
 ```
 
-### Run NGINX Proxy Container
+## Run NGINX Proxy Container
 This sits in front of all of your sites at port 80 serving all your sites.
 
 ```
 docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
 ```
 
-###PHP-FPM + Nginx
+## Run WordPress Container
 Each site runs in its own container with PHP-FPM and Nginx instance.
 ```
 docker run -d --name etopian_com -e VIRTUAL_HOST=www.etopian.com,etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
 ```
 
-##MySQL/MariaDB Database
+##Run MySQL/MariaDB Database Container
 
 In order to access MySQL/MariaDB running in a container you need a MySQL client on your host. You can alternatively using the client in the container, described below.
 

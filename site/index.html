@@ -60,7 +60,7 @@
                 
                     <li><a class="toctree-l4" href="#install-docker">Install Docker</a></li>
                 
-                    <li><a class="toctree-l4" href="#mysql-database">MySQL Database</a></li>
+                    <li><a class="toctree-l4" href="#mysqlmariadb-database">MySQL/MariaDB Database</a></li>
                 
                     <li><a class="toctree-l4" href="#configure-wp">Configure WP</a></li>
                 
@@ -210,10 +210,14 @@
 <pre><code>docker run -d --name etopian_com -e VIRTUAL_HOST=www.etopian.com,etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
 </code></pre>
 
-<h2 id="mysql-database">MySQL Database</h2>
-<pre><code>apt-get update &amp;&amp; apt-get install mysql-client-core-5.6
+<h2 id="mysqlmariadb-database">MySQL/MariaDB Database</h2>
+<p>In order to access MySQL/MariaDB running in a container you need a MySQL client on your host. You can alternatively using the client in the container, described below.</p>
+<h3 id="install-mariadb">Install MariaDB</h3>
+<pre><code>docker run -d --name mariadb -p 172.17.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=myROOTPASSOWRD -v /data/mysql:/var/lib/mysql mariadb
+</code></pre>
 
-docker run -d --name mariadb -p 172.17.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=myROOTPASSOWRD -v /data/mysql:/var/lib/mysql mariadb
+<h3 id="use-mysql-from-the-host">Use MySQL from the host</h3>
+<pre><code class="bash">apt-get update &amp;&amp; apt-get install mariadb-client-10.0
 
 #login to mariadb
 mysql -uroot -pmyROOTPASSOWRD -h 172.17.0.1 -P 3306
@@ -225,6 +229,15 @@ GRANT ALL PRIVILEGES ON  etopian_com.* TO 'etopian_com'@'%';
 
 #if you have a db, import it. if not then configure wp and install it using the interface.
 mysql -uroot -pmyROOTPASSOWRD -h 172.17.0.1 etopian_com &lt; mydatabase.mysql
+</code></pre>
+
+<h3 id="use-mysql-client-in-the-container-image">Use MySQL client in the container image</h3>
+<pre><code class="bash">docker cp mydatabase.sql mariadb:/tmp/mydatabase.mysql
+docker exec -it mariadb bash
+export TERM=xterm
+cd /tmp
+mysql -uroot -pmyROOTPASSOWRD &lt; mydatabase.mysql
+
 </code></pre>
 
 <h2 id="configure-wp">Configure WP</h2>
@@ -508,7 +521,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 11:54:22
+Last Updated UTC : 2016-11-12 12:05:00
 
 
 -->
