@@ -45,12 +45,19 @@ Each site runs in its own container with PHP-FPM and Nginx instance.
 docker run -d --name etopian_com -e VIRTUAL_HOST=www.etopian.com,etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
 ```
 
-##MySQL Database
+##MySQL/MariaDB Database
 
+In order to access MySQL/MariaDB running in a container you need a MySQL client on your host. You can alternatively using the client in the container, described below.
+
+### Install MariaDB
 ```
-apt-get update && apt-get install mysql-client-core-5.6
-
 docker run -d --name mariadb -p 172.17.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=myROOTPASSOWRD -v /data/mysql:/var/lib/mysql mariadb
+```
+
+### Use MySQL from the host
+
+```bash
+apt-get update && apt-get install mariadb-client-10.0
 
 #login to mariadb
 mysql -uroot -pmyROOTPASSOWRD -h 172.17.0.1 -P 3306
@@ -62,6 +69,17 @@ GRANT ALL PRIVILEGES ON  etopian_com.* TO 'etopian_com'@'%';
 
 #if you have a db, import it. if not then configure wp and install it using the interface.
 mysql -uroot -pmyROOTPASSOWRD -h 172.17.0.1 etopian_com < mydatabase.mysql
+```
+
+### Use MySQL client in the container image
+
+```bash
+docker cp mydatabase.sql mariadb:/tmp/mydatabase.mysql
+docker exec -it mariadb bash
+export TERM=xterm
+cd /tmp
+mysql -uroot -pmyROOTPASSOWRD < mydatabase.mysql
+
 ```
 
 ## Configure WP
