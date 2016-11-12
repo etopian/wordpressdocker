@@ -1,12 +1,23 @@
 # Install Docker on Ubuntu 16.04 LTS
 
-Install Docker on your machine.
+Install Docker on Ubuntu 16.04 LTS. Below is a bash script containing a number of commands which will automatically install Docker on your VPS or dedicated server.
 
-Install Docker on Ubuntu 14.04 or Ubuntu 14.10
+
 ```bash
-$ sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-$ sudo apt-get update
-$ sudo apt-get install lxc-docker
+#!/bin/bash
+
+apt-get update
+apt-get install -y apt-transport-https ca-certificates
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+echo 'deb https://apt.dockerproject.org/repo ubuntu-xenial main' > /etc/apt/sources.list.d/docker.list
+apt-get update
+#apt-cache policy docker-engine
+
+#apt-get update
+apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+#apt-get update
+apt-get install -y docker-engine
+service docker start
 ```
 
 Now Docker is installed on your Ubuntu box... Time to install WordPress
