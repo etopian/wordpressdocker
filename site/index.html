@@ -186,7 +186,7 @@ https://github.com/etopian/docker-wordpress-cli</p>
 
 <h3 id="site-files">Site files</h3>
 <p>Site files need to be located in, simply copy the files here:</p>
-<pre><code>#copy your WP install here, if you don't have one simply download WP and put that here
+<pre><code>#Copy your WP install here, if you don't have one simply download WP and put that here
 /data/sites/etopian.com/htdocs
 </code></pre>
 
@@ -195,7 +195,7 @@ https://github.com/etopian/docker-wordpress-cli</p>
 <pre><code>chown -R 100:101 htdocs/
 </code></pre>
 
-<h3 id="nginx-proxy">NGinx Proxy</h3>
+<h3 id="nginx-proxy">NGINX Proxy</h3>
 <p>This sits in front of all of your sites at port 80 serving all your sites.</p>
 <pre><code>docker run -d --name nginx -p 80:80 -p 443:443 -v /etc/nginx/htpasswd:/etc/nginx/htpasswd -v /etc/nginx/vhost.d:/etc/nginx/vhost.d:ro -v /etc/nginx/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro etopian/nginx-proxy
 </code></pre>
@@ -310,9 +310,6 @@ https://github.com/etopian/alpine-php-wordpress</p>
     php-intl php-bcmath
 </code></pre>
 
-<h3 id="kernel-upgrade">Kernel Upgrade</h3>
-<p>The kernel upgrade to 3.19 on Ubuntu 14.04 is not recommend/possible. It will cause your Docker instance to fail. The reason is that 3.19 kernel does not have AUFS. Docker is switching to another file provider, but for now stick with the 3.13 kernel. Downgrade to 3.13 if you have upgraded and Docker won't start.</p>
-<h3 id="log-rotate">Log Rotate</h3>
 <h3 id="php-modules">PHP Modules</h3>
 <h4 id="list-of-available-modules-in-alpine-linux-not-all-these-are-installed">List of available modules in Alpine Linux, not all these are installed.</h4>
 <h5 id="in-order-to-install-a-php-module-do-leave-out-the-version-number-ie-5611-r0">In order to install a php module do, (leave out the version number i.e. -5.6.11-r0</h5>
@@ -326,89 +323,96 @@ docker exec &lt;image_id&gt; apk add php-soap
 docker restart &lt;image_name&gt;
 </code></pre>
 
-<p>php-soap-5.6.11-r0</p>
-<p>php-openssl-5.6.11-r0</p>
-<p>php-gmp-5.6.11-r0</p>
-<p>php-phar-5.6.11-r0</p>
-<p>php-embed-5.6.11-r0</p>
-<p>php-pdo_odbc-5.6.11-r0</p>
-<p>php-mysqli-5.6.11-r0</p>
-<p>php-common-5.6.11-r0</p>
-<p>php-ctype-5.6.11-r0</p>
-<p>php-fpm-5.6.11-r0</p>
-<p>php-shmop-5.6.11-r0</p>
-<p>php-xsl-5.6.11-r0</p>
-<p>php-curl-5.6.11-r0</p>
-<p>php-pear-net_idna2-0.1.1-r0</p>
-<p>php-json-5.6.11-r0</p>
-<p>php-dom-5.6.11-r0</p>
-<p>php-pspell-5.6.11-r0</p>
-<p>php-sockets-5.6.11-r0</p>
-<p>php-pear-mdb2-driver-pgsql-2.5.0b5-r0</p>
-<p>php-pdo-5.6.11-r0</p>
-<p>phpldapadmin-1.2.3-r3</p>
-<p>php-pear-5.6.11-r0</p>
-<p>php-phpmailer-5.2.0-r0</p>
-<p>phpmyadmin-doc-4.4.10-r0</p>
-<p>php-cli-5.6.11-r0</p>
-<p>php-zip-5.6.11-r0</p>
-<p>php-pgsql-5.6.11-r0</p>
-<p>php-sysvshm-5.6.11-r0</p>
-<p>php-imap-5.6.11-r0</p>
-<p>php-intl-5.6.11-r0</p>
-<p>php-embed-5.6.11-r0</p>
-<p>php-zlib-5.6.11-r0</p>
-<p>php-phpdbg-5.6.11-r0</p>
-<p>php-sysvsem-5.6.11-r0</p>
-<p>phpmyadmin-4.4.10-r0</p>
-<p>php-mysql-5.6.11-r0</p>
-<p>php-sqlite3-5.6.11-r0</p>
-<p>php-cgi-5.6.11-r0</p>
-<p>php-apcu-4.0.7-r1</p>
-<p>php-snmp-5.6.11-r0</p>
-<p>php-pdo_pgsql-5.6.11-r0</p>
-<p>php-xml-5.6.11-r0</p>
-<p>php-wddx-5.6.11-r0</p>
-<p>php-sysvmsg-5.6.11-r0</p>
-<p>php-enchant-5.6.11-r0</p>
-<p>php-bcmath-5.6.11-r0</p>
-<p>php-pear-mail_mime-1.8.9-r0</p>
-<p>php-apache2-5.6.11-r0</p>
-<p>php-gd-5.6.11-r0</p>
-<p>php-pear-mdb2-driver-sqlite-2.5.0b5-r0</p>
-<p>php-xcache-3.2.0-r1</p>
-<p>php-odbc-5.6.11-r0</p>
-<p>php-mailparse-2.1.6-r2</p>
-<p>php-ftp-5.6.11-r0</p>
-<p>perl-php-serialization-0.34-r1</p>
-<p>php-exif-5.6.11-r0</p>
-<p>php-pdo_mysql-5.6.11-r0</p>
-<p>php-ldap-5.6.11-r0</p>
-<p>php-pear-mdb2-2.5.0b5-r0</p>
-<p>php-dbg-5.6.11-r0</p>
-<p>php-pear-net_smtp-1.6.2-r0</p>
-<p>php-opcache-5.6.11-r0</p>
-<p>php-pdo_sqlite-5.6.11-r0</p>
-<p>php-posix-5.6.11-r0</p>
-<p>php-dba-5.6.11-r0</p>
-<p>php-iconv-5.6.11-r0</p>
-<p>php-gettext-5.6.11-r0</p>
-<p>php-xmlreader-5.6.11-r0</p>
-<p>php-5.6.11-r0</p>
-<p>php-xmlrpc-5.6.11-r0</p>
-<p>php-bz2-5.6.11-r0</p>
-<p>perl-php-serialization-doc-0.34-r1</p>
-<p>php-mcrypt-5.6.11-r0</p>
-<p>php-memcache-3.0.8-r3</p>
-<p>xapian-bindings-php-1.2.21-r1</p>
-<p>php-pdo_dblib-5.6.11-r0</p>
-<p>php-phalcon-2.0.3-r0</p>
-<p>php-dev-5.6.11-r0</p>
-<p>php-doc-5.6.11-r0</p>
-<p>php-mssql-5.6.11-r0</p>
-<p>php-calendar-5.6.11-r0</p>
-<p>php-pear-mdb2-driver-mysqli-2.5.0b5-r0</p>
-<p>php-pear-mdb2-driver-mysql-2.5.0b5-r0</p>
+<pre><code>php7-intl-7.0.13-r0
+php7-openssl-7.0.13-r0
+php7-dba-7.0.13-r0
+php7-sqlite3-7.0.13-r0
+php7-pear-7.0.13-r0
+php7-phpdbg-7.0.13-r0
+php7-litespeed-7.0.13-r0
+php7-gmp-7.0.13-r0
+php7-pdo_mysql-7.0.13-r0
+php7-pcntl-7.0.13-r0
+php7-common-7.0.13-r0
+php7-oauth-2.0.1-r0
+php7-xsl-7.0.13-r0
+php7-fpm-7.0.13-r0
+php7-gmagick-2.0.4_rc1-r2
+php7-mysqlnd-7.0.13-r0
+php7-enchant-7.0.13-r0
+php7-solr-2.4.0-r0
+php7-uuid-1.0.4-r0
+php7-pspell-7.0.13-r0
+php7-ast-0.1.1-r0
+php7-redis-3.0.0-r1
+php7-snmp-7.0.13-r0
+php7-doc-7.0.13-r0
+php7-mbstring-7.0.13-r0
+php7-lzf-1.6.5-r1
+php7-timezonedb-2016.3-r0
+php7-dev-7.0.13-r0
+php7-xmlrpc-7.0.13-r0
+php7-rdkafka-2.0.0-r0
+php7-stats-2.0.1-r0
+php7-embed-7.0.13-r0
+php7-xmlreader-7.0.13-r0
+php7-pdo_sqlite-7.0.13-r0
+php7-exif-7.0.13-r0
+php7-msgpack-2.0.1-r0
+php7-opcache-7.0.13-r0
+php7-ldap-7.0.13-r0
+php7-posix-7.0.13-r0
+php7-session-7.0.13-r0
+php7-gd-7.0.13-r0
+php7-gettext-7.0.13-r0
+php7-mailparse-3.0.1-r0
+php7-json-7.0.13-r0
+php7-xml-7.0.13-r0
+php7-mongodb-1.1.4-r1
+php7-7.0.13-r0
+php7-iconv-7.0.13-r0
+php7-sysvshm-7.0.13-r0
+php7-curl-7.0.13-r0
+php7-shmop-7.0.13-r0
+php7-odbc-7.0.13-r0
+php7-phar-7.0.13-r0
+php7-pdo_pgsql-7.0.13-r0
+php7-imap-7.0.13-r0
+php7-pdo_dblib-7.0.13-r0
+php7-pgsql-7.0.13-r0
+php7-pdo_odbc-7.0.13-r0
+php7-xdebug-2.4.1-r0
+php7-zip-7.0.13-r0
+php7-apache2-7.0.13-r0
+php7-cgi-7.0.13-r0
+php7-ctype-7.0.13-r0
+php7-inotify-2.0.0-r0
+php7-couchbase-2.2.3-r1
+php7-amqp-1.7.1-r0
+php7-mcrypt-7.0.13-r0
+php7-readline-7.0.13-r0
+php7-wddx-7.0.13-r0
+php7-cassandra-1.2.2-r0
+php7-libsodium-1.0.6-r0
+php7-bcmath-7.0.13-r0
+php7-calendar-7.0.13-r0
+php7-tidy-7.0.13-r0
+php7-dom-7.0.13-r0
+php7-sockets-7.0.13-r0
+php7-zmq-1.1.3-r0
+php7-memcached-3.0_pre20160808-r0
+php7-soap-7.0.13-r0
+php7-apcu-5.1.6-r0
+php7-sysvmsg-7.0.13-r0
+php7-zlib-7.0.13-r0
+php7-ssh2-1.0-r0
+php7-ftp-7.0.13-r0
+php7-sysvsem-7.0.13-r0
+php7-pdo-7.0.13-r0
+php7-bz2-7.0.13-r0
+php7-mysqli-7.0.13-r0
+</code></pre>
+
 <h2 id="firewall">Firewall</h2>
 <p>You should also deploy a firewall on your box. However, it's very easy to lock yourself out of your box, so I will not give you exact instructions on how to do it. The following is what I use for my box using arno-iptables-firewall.</p>
 <p>Once the firewall is in place, notice when the box reboots, Docker might not start in the right order and therefore the iptables rules it might need might not be initialized and due to this things might not work. Simply restart the Docker service:</p>
@@ -489,7 +493,7 @@ OPEN_ICMP=1
 <!--
 MkDocs version : 0.16.0
 
-Last Updated UTC : 2016-11-12 11:05:06
+Last Updated UTC : 2016-11-12 11:13:06
 
 
 -->

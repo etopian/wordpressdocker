@@ -1,6 +1,6 @@
 # Quick start, manual provisioning
 ## Our custom docker image
-First install Docker... see above for a link. We are using Docker 1.9.1. We are running Ubuntu 14.04.2 LTS
+First [install Docker](docker/Install-Docker-on-Ubuntu/). We are using Docker 1.12.3. We are running Ubuntu Xenial 16.04 LTS
 
 The following is a quick tutorial for deploying your site on Docker. It has been tested and works with sites like www.etopian.com. It also supports using an SSL certificate. It uses Alpine Linux for serving the actual site, the beautiful thing is that a site can be served in around 50mb of ram. Using the process below you can deploy multiple WP sites on the same box, at least 10 sites on a 1gb VPS extremely securely as each site lives in its own container.
 
@@ -10,17 +10,7 @@ https://github.com/etopian/docker-wordpress-cli
 For this demo we are deploying etopian.com, replace that with your custom domain.
 
 ###Security
-The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root.
-
-###IP address fix
-Once you finish this you will find that logs command does not show the correct IP address. In order to fix this you must do the following:
-
-edit /etc/default/docker
-
-```bash
-DOCKER_OPTS="--userland-proxy=false --storage-driver=aufs"
-```
-
+The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See [Why use Docker with WordPress](docker/Why-use-Docker-with-WordPress) for more.
 
 ###Site files
 
@@ -39,7 +29,7 @@ The site on your host needs proper file permissions. Go to your site's folder an
 chown -R 100:101 htdocs/
 ```
 
-###NGINX Proxy
+### Run NGINX Proxy Container
 This sits in front of all of your sites at port 80 serving all your sites.
 
 ```
@@ -173,33 +163,46 @@ Settings > Redis and click the button to activate.
 
 ![wp_redis.png](http://assets.dockerwordpress.com.s3.amazonaws.com/images/wp_redis.png)
 
-### Adding new PHP modules to a certain site
+
+## Modifying the image
+
 The image for Alpine Linux running PHP may be found here:
 https://github.com/etopian/alpine-php-wordpress
 
-The following modules are included with the image etopian/alpine-php-wordpress
+You may fork it and modify it to add additional modules and what not.
+
+## Adding new PHP modules
+
+> The following modules are included with the image etopian/alpine-php-wordpress
+
 ```
-    php-fpm php-json php-zlib php-xml php-pdo php-phar php-openssl \
-    php-pdo_mysql php-mysqli \
-    php-gd php-iconv php-mcrypt \
-    php-mysql php-curl php-opcache php-ctype php-apcu \
-    php-intl php-bcmath
+    php7-fpm php7-json php7-zlib php7-xml php7-pdo php7-phar php7-openssl \
+    php7-pdo_mysql php7-mysqli php7-session \
+    php7-gd php7-iconv php7-mcrypt \
+    php7-curl php7-opcache php7-ctype php7-apcu \
+    php7-intl php7-bcmath php7-dom php7-xmlreader
 ```
 
 
-### PHP Modules
-#### List of available modules in Alpine Linux, not all these are installed.
-##### In order to install a php module do, (leave out the version number i.e. -5.6.11-r0
+## List of PHP Modules
+
+> List of available modules in Alpine Linux, not all these are installed.
+
+> In order to install a php module do, (leave out the version number i.e. -5.7.0.13-r0
+
+
 ```
-docker exec <image_id> apk add <pkg_name>
-docker restart <image_name>
+docker exec <container_name> apk add <pkg_name>
+docker restart <container_name>
+
 ```
+
 Example:
 
 ```
-docker exec <image_id> apk update #do this once.
-docker exec <image_id> apk add php-soap
-docker restart <image_name>
+docker exec <container_name> apk update #do this once.
+docker exec <container_name> apk add php-soap
+docker restart <container_name>
 ```
 
 
@@ -334,4 +337,4 @@ OPEN_ICMP=1
 ### Have issues, comments or questions: https://github.com/etopian/docker-wordpress/issues
 
 ---
-Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. dockerwordpress.com WordPress Tutorial is not affiliated with Docker, Inc.
+Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. wordpressdocker.com Unofficial WordPress Docker Tutorial is not affiliated with Docker, Inc.

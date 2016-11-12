@@ -21,4 +21,6 @@ Load Impact profiled Docker against bare metal, meaning servers without any virt
 
 - http://blog.loadimpact.com/blog/wordpress-bare-metal-vs-wordpress-docker-performance-comparison/
 
-## [Maintainace and Upgrading](http://www.dockerwordpress.com/docker/upgrading-wordpress-docker "Maintainace and Upgrading")
+
+## Maintainace and Upgrading Containers
+See [Maintainace and Upgrading](/docker/Upgrading-Containers)
