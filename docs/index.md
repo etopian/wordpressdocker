@@ -61,6 +61,20 @@ Each site runs in its own container with PHP-FPM and Nginx instance.
 docker run -d --name etopian_com -e VIRTUAL_HOST=www.etopian.com,etopian.com -v /data/sites/etopian.com:/DATA etopian/alpine-php-wordpress
 ```
 
+
+If you use SSL you need to run your container with the filename of the certificate you are using.
+```
+ -e CERT_NAME=etopian.com
+```
+
+Put your SSL certificate here, with the VIRTUAL_HOST as the file name: 
+```
+/etc/nginx/certs
+etopian.com.crt  etopian.com.csr  etopian.com.key
+```
+
+Also check the wp-config section for information on how to modify your wp-config file if you are using SSL/TLS.
+
 ##Run MySQL/MariaDB Database Container
 
 In order to access MySQL/MariaDB running in a container you need a MySQL client on your host. You can alternatively using the client in the container, described below.
@@ -98,7 +112,7 @@ mysql -uroot -pmyROOTPASSOWRD < mydatabase.mysql
 
 ```
 
-## Configure WP
+## Configure WordPress
 
 
 ###wp-config.php
