@@ -28,7 +28,7 @@ Each WordPress Container contains:
 
 File upload size limit is 2GB
 
-Currently there is no process manager running in the WordPress container. We have it on our todo list to use s6 as the process manager. The nginx user is enabled on each container so you can bash into the container as the same user as the site, to use wp-cli. This is a minor security risk. Currrently there is no way to directly SSH into the container, you have to go through the host. There are no plans to add SSH to the container, you have to that yourself if that's something you need.
+Currently there is no process manager running in the WordPress container, not that this affects things much. We have it on our todo list to use s6 as the process manager. The nginx user is enabled on each container so you can bash into the container as the same user as the site, to use wp-cli. This is a minor security risk. Currrently there is no way to directly SSH into the container, you have to go through the host. There are no plans to add SSH to the container, you have to that yourself if that's something you need.
 
 ## Install Docker
 
