@@ -1,5 +1,9 @@
 # Deploying Docker on WordPress
 
+
+## Our Product
+A bit of shameless self-promotion. We are building a freemium Docker hosting control panel which does everything taught in this tutorial automatically and much more, backups, staging/dev/prod, code editor, Github/Bitbucket deployments, DNS, **WordPress Management like ManageWP**, etc. For example deploy 10 WordPress sites on a $5 Digital Ocean Droplet in around 10 minutes. Save $95 compared to WPEngine!. Sign up at [http://www.devoply.com](http://www.devoply.com) and make your life much easier!
+
 ## Introduction
 
 Docker is a great technology which can be used for many purposes. One purpose for using Docker is to deploy WordPress. This tutorial covers deploying **multiple WordPress websites** on Docker. For this demo we are deploying etopian.com, replace that with your custom domain.
@@ -7,8 +11,6 @@ Docker is a great technology which can be used for many purposes. One purpose fo
 ## Our custom Docker image
 The following is a quick tutorial for deploying your site on Docker. It has been tested and works with sites like www.etopian.com. It also supports using an SSL certificate. It uses Alpine Linux for serving the actual site, the beautiful thing is that a site can be served in around 50mb of ram. Using the process below you can deploy multiple WP sites on the same box, at least 10 sites on a 1gb VPS extremely securely as each site lives in its own container. This container uses Alpine Linux Edge with PHP7. We have found this to be a stable solution, despite being Edge being the testing branch of Alpine Linux. Our image on [github](https://github.com/etopian/alpine-php-wordpress).
 
-### Our Product
-A bit of shameless self-promotion. We are building a freemium Docker hosting control panel which does everything taught in this tutorial automatically and much more, backups, staging/dev/prod, code editor, Github/Bitbucket deployments, DNS, **WordPress Management like ManageWP**, etc. For example deploy 10 WordPress sites on a $5 Digital Ocean Droplet in around 10 minutes. Save $95 compared to WPEngine!. Sign up at [http://www.devoply.com](http://www.devoply.com) and make your life much easier!
 
 ###Security
 The process serving the website, Nginx and PHP-FPM, does not run as root. It's no less secure than running a non-root user like www-data to serve your site. If you can breakout to root within the container, you can potentially get to the host system. But that's absolutely no different than any other Linux system. If you break out of www-data on a normal setup to root, then you have root. See [Why use Docker with WordPress](docker/Why-use-Docker-with-WordPress) for more.
