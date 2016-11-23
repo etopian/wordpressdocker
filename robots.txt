@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://www.wordpressdocker.com/sitemap.xml

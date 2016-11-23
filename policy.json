@@ -1,0 +1,23 @@
+{
+"Version": "2008-10-17",
+"Statement": [
+  {
+    "Sid": "1",
+    "Effect": "Deny",
+    "Principal": {
+      "AWS": "*"
+    },
+    "Action": "s3:GetObject",
+    "Resource": "arn:aws:s3:::yourbucketname/*",
+    "Condition": {
+      "StringNotLike": {
+        "aws:Referer": [
+          "http://wordpressdocker.com/*",
+          "http://*.wordpressdocker.com/*"
+        ]
+      }
+    }
+  }
+]
+}
+
