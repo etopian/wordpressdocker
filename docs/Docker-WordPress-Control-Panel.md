@@ -1,4 +1,4 @@
-## Docker WordPress Control Panel
+# Docker WordPress Control Panel
 
 [<img src="http://www.wordpressdocker.com/imgs/devoply.png">](http://www.devoply.com/)
 
