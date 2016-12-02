@@ -187,7 +187,7 @@ Mailgun WP Plugin works fine in the container but the test to see if it is worki
 * https://wordpress.org/plugins/wp-mail-bank/
 
 ##Logs
-You can view the logs of all you sites using the NGINX proxy container.
+You can view the logs of all your sites using the NGINX proxy container.
 
 ```
 docker logs nginx
