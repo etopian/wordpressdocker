@@ -240,7 +240,7 @@ Settings > Redis and click the button to activate.
 ## Modifying the image
 
 The image for Alpine Linux running PHP may be found here:
-https://github.com/etopian/alpine-php-wordpress
+[https://github.com/etopian/alpine-php-wordpress](https://github.com/etopian/alpine-php-wordpress)
 
 You may fork it and modify it to add additional modules and what not.
 
@@ -407,7 +407,7 @@ OPEN_ICMP=1
 ```
 
 
-### Have issues, comments or questions: https://github.com/etopian/docker-wordpress/issues
+### Have issues, comments or questions: [Join us on Gitter](https://gitter.im/etopian/devoply)
 
 ---
 Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. wordpressdocker.com Unofficial WordPress Docker Tutorial is not affiliated with Docker, Inc.
