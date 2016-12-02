@@ -49,6 +49,14 @@ The site on your host needs proper file permissions. Go to your site's folder an
 chown -R 100:101 htdocs/
 ```
 
+If you are using this image for development on a Linux box, then you will want to edit these files as a different user. You can do that using the following command:
+
+```
+setfacl -Rm u:<user>:rwX,g:<user>:rwX,d:g:<user>:rwX /data/sites/<site-domain>.com
+```
+Replace the tokens with their appropriate replacements.
+
+
 ## Run NGINX Reverse Proxy Container
 This sits in front of all of your sites at port 80 and 443 serving all your sites. It was automatically reconfigure itself and reload itself when you create a new WordPress site container.
 
