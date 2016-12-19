@@ -1,5 +1,8 @@
+A control panel that helps provision instances for WordPress and Drupal sites automatically. Also helps manage WordPress.
+- [DEVOPly](https://www.devoply.com)
+
 Uses linking to the MySQL container and includes Apache and FPM in the contianer.
-- [Official WordPress from Docker Library](https://github.com/docker-library/wordpress){:rel=nofollow}
+- <a rel="nofollow" href="https://github.com/docker-library/wordpress">Official WordPress from Docker Library</a>
 
 Includes everything you need in a container including the database, gets heavy with too many sites. Also you have to add an Nginx proxy for more than one server.
 - https://github.com/eugeneware/docker-wordpress-nginx
