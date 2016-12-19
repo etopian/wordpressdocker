@@ -1,4 +1,4 @@
-# Deploy WordPress to Docker - Unofficial Quickstar Tutorial / Guide
+# WordPress on Docker in Production - Unofficial Quickstart Tutorial / Guide
 
 ## Introduction
 
