@@ -369,6 +369,12 @@ php7-pdo-7.0.13-r0
 php7-bz2-7.0.13-r0
 php7-mysqli-7.0.13-r0
 ```
+# Docker WordPress Control Panel
+
+[<img src="http://www.wordpressdocker.com/imgs/devoply.png">](http://www.devoply.com/)
+
+DEVOPly is a hosting control panel which does everything taught in this tutorial automatically and much more, backups, staging/dev/prod, code editor, Github/Bitbucket deployments, DNS, WordPress Management. [http://www.devoply.com](http://www.devoply.com)!
+
 
 
 
