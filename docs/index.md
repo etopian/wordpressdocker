@@ -416,4 +416,4 @@ OPEN_ICMP=1
 ### Have issues, comments or questions: [Join us on Gitter](https://gitter.im/etopian/devoply)
 
 ---
-Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. wordpressdocker.com Unofficial WordPress Docker Tutorial is not affiliated with Docker, Inc.
+Docker DOES NOT own, operate, license, sponsors or authorizes this site. Docker® is a registered trademark of Docker, Inc. Similarly, WordPress Foundation DOES NOT own, operate, license, sponsors or authorizes this site. WordPress® is a registered trademark of WordPress Foundation. wordpressdocker.com Unofficial WordPress Docker Tutorial is not affiliated with Docker, Inc or WordPress Foundation. This site is a not for profit tutorial made available free of charge.
