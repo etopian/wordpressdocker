@@ -1,6 +1,6 @@
 # Install Docker on Ubuntu 18.04 LTS
 
-Install Docker on Ubuntu 16.04 LTS. Below is a bash script containing a number of commands which will automatically install Docker on your VPS or dedicated server.
+Install Docker on Ubuntu 18.04 LTS. Below is a bash script containing a number of commands which will automatically install Docker on your VPS or dedicated server.
 
 
 ```bash
