@@ -76,7 +76,7 @@ If you use SSL you need to run your container with the filename of the certifica
  -e CERT_NAME=etopian.com
 ```
 
-Put your SSL certificate here, with the VIRTUAL_HOST as the file name: 
+Put your SSL certificate here, with the VIRTUAL_HOST as the file name:
 ```
 /etc/nginx/certs
 etopian.com.crt  etopian.com.csr  etopian.com.key
@@ -145,7 +145,7 @@ Your site should be working as long as the DNS entries are properly set.
 
 
 ### wp-config.php - SSL
-Put your SSL certificate here, with the VIRTUAL_HOST as the file name: 
+Put your SSL certificate here, with the VIRTUAL_HOST as the file name:
 ```
 /etc/nginx/certs
 etopian.com.crt  etopian.com.csr  etopian.com.key
@@ -222,7 +222,7 @@ https://wordpress.org/plugins/redis-cache/
 Put this in your wp-config.php below the DB_HOST and DB_NAME entries.
 ```
 define('WP_REDIS_HOST', DB_HOST);
-define('WP_CACHE_KEY_SALT', DB_NAME); 
+define('WP_CACHE_KEY_SALT', DB_NAME);
 ```
 
 Deploy Redis
@@ -280,94 +280,94 @@ docker restart <container_name>
 
 
 ```
-php7-intl-7.0.13-r0
-php7-openssl-7.0.13-r0
-php7-dba-7.0.13-r0
-php7-sqlite3-7.0.13-r0
-php7-pear-7.0.13-r0
-php7-phpdbg-7.0.13-r0
-php7-litespeed-7.0.13-r0
-php7-gmp-7.0.13-r0
-php7-pdo_mysql-7.0.13-r0
-php7-pcntl-7.0.13-r0
-php7-common-7.0.13-r0
-php7-oauth-2.0.1-r0
-php7-xsl-7.0.13-r0
-php7-fpm-7.0.13-r0
-php7-gmagick-2.0.4_rc1-r2
-php7-mysqlnd-7.0.13-r0
-php7-enchant-7.0.13-r0
-php7-solr-2.4.0-r0
-php7-uuid-1.0.4-r0
-php7-pspell-7.0.13-r0
-php7-ast-0.1.1-r0
-php7-redis-3.0.0-r1
-php7-snmp-7.0.13-r0
-php7-doc-7.0.13-r0
-php7-mbstring-7.0.13-r0
-php7-lzf-1.6.5-r1
-php7-timezonedb-2016.3-r0
-php7-dev-7.0.13-r0
-php7-xmlrpc-7.0.13-r0
-php7-rdkafka-2.0.0-r0
-php7-stats-2.0.1-r0
-php7-embed-7.0.13-r0
-php7-xmlreader-7.0.13-r0
-php7-pdo_sqlite-7.0.13-r0
-php7-exif-7.0.13-r0
-php7-msgpack-2.0.1-r0
-php7-opcache-7.0.13-r0
-php7-ldap-7.0.13-r0
-php7-posix-7.0.13-r0
-php7-session-7.0.13-r0
-php7-gd-7.0.13-r0
-php7-gettext-7.0.13-r0
-php7-mailparse-3.0.1-r0
-php7-json-7.0.13-r0
-php7-xml-7.0.13-r0
-php7-mongodb-1.1.4-r1
-php7-7.0.13-r0
-php7-iconv-7.0.13-r0
-php7-sysvshm-7.0.13-r0
-php7-curl-7.0.13-r0
-php7-shmop-7.0.13-r0
-php7-odbc-7.0.13-r0
-php7-phar-7.0.13-r0
-php7-pdo_pgsql-7.0.13-r0
-php7-imap-7.0.13-r0
-php7-pdo_dblib-7.0.13-r0
-php7-pgsql-7.0.13-r0
-php7-pdo_odbc-7.0.13-r0
-php7-xdebug-2.4.1-r0
-php7-zip-7.0.13-r0
-php7-apache2-7.0.13-r0
-php7-cgi-7.0.13-r0
-php7-ctype-7.0.13-r0
-php7-inotify-2.0.0-r0
-php7-couchbase-2.2.3-r1
-php7-amqp-1.7.1-r0
-php7-mcrypt-7.0.13-r0
-php7-readline-7.0.13-r0
-php7-wddx-7.0.13-r0
-php7-cassandra-1.2.2-r0
-php7-libsodium-1.0.6-r0
-php7-bcmath-7.0.13-r0
-php7-calendar-7.0.13-r0
-php7-tidy-7.0.13-r0
-php7-dom-7.0.13-r0
-php7-sockets-7.0.13-r0
-php7-zmq-1.1.3-r0
-php7-memcached-3.0_pre20160808-r0
-php7-soap-7.0.13-r0
-php7-apcu-5.1.6-r0
-php7-sysvmsg-7.0.13-r0
-php7-zlib-7.0.13-r0
-php7-ssh2-1.0-r0
-php7-ftp-7.0.13-r0
-php7-sysvsem-7.0.13-r0
-php7-pdo-7.0.13-r0
-php7-bz2-7.0.13-r0
-php7-mysqli-7.0.13-r0
+php7-intl
+php7-openssl
+php7-dba
+php7-sqlite3
+php7-pear
+php7-phpdbg
+php7-litespeed
+php7-gmp
+php7-pdo_mysql
+php7-pcntl
+php7-common
+php7-oauth
+php7-xsl
+php7-fpm
+php7-gmagick
+php7-mysqlnd
+php7-enchant
+php7-solr
+php7-uuid
+php7-pspell
+php7-ast
+php7-redis
+php7-snmp
+php7-doc
+php7-mbstring
+php7-lzf
+php7-timezonedb
+php7-dev
+php7-xmlrpc
+php7-rdkafka
+php7-stats
+php7-embed
+php7-xmlreader
+php7-pdo_sqlite
+php7-exif
+php7-msgpack
+php7-opcache
+php7-ldap
+php7-posix
+php7-session
+php7-gd
+php7-gettext
+php7-mailparse
+php7-json
+php7-xml
+php7-mongodb
+php7
+php7-iconv
+php7-sysvshm
+php7-curl
+php7-shmop
+php7-odbc
+php7-phar
+php7-pdo_pgsql
+php7-imap
+php7-pdo_dblib
+php7-pgsql
+php7-pdo_odbc
+php7-xdebug
+php7-zip
+php7-apache2
+php7-cgi
+php7-ctype
+php7-inotify
+php7-couchbase
+php7-amqp
+php7-mcrypt
+php7-readline
+php7-wddx
+php7-cassandra
+php7-libsodium
+php7-bcmath
+php7-calendar
+php7-tidy
+php7-dom
+php7-sockets
+php7-zmq
+php7-memcached
+php7-soap
+php7-apcu
+php7-sysvmsg
+php7-zlib
+php7-ssh2
+php7-ftp
+php7-sysvsem
+php7-pdo
+php7-bz2
+php7-mysqli
 ```
 # Docker WordPress Control Panel
 
