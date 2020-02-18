@@ -1,6 +1,5 @@
 site_name: WordPress Docker - Unofficial Guide / Tutorial
-theme: null
-theme_dir: readthedocs
+theme: ivory
 repo_url: https://github.com/etopian/wordpressdocker
 edit_uri: edit/master/docs/
 google_analytics: ['UA-63062106-4', 'www.wordpressdocker.com']
