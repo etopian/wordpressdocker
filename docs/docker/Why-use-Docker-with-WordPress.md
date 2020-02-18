@@ -8,12 +8,12 @@ WordPress sites are often hacked. Often the issue is not core WP but instead an 
 
 ### Data theft
 
-Once a site is exploited, all data on the site is available for the attacker to download. If multiple sites are running on the same server with the same user, say www-data, or the same group with the wrong file permissions. Then all data for all sites can be accessed by the attacker. This allows the attacked to steal hashed passwords, private information, usernames or anything else that might be of value and is accessible by the user. That can then later be used to attack yet other sites and deface them, steal e-mails, and so on.
+Once a site is exploited, all data on the site is available for the attacker to download. If multiple sites are running on the same server with the same user, say www-data, or the same group with the wrong file permissions. Then all data for all sites can be accessed by the attacker. This allows the attacker to steal hashed passwords, private information, usernames or anything else that might be of value and is accessible by the user. That can then later be used to attack other sites and deface them, steal e-mails, and so on.
 
 
 ### Loss of search engine ranking
 
-Exploited sites may produce different content which could cause your listing to lose rank. They may also host malware which is served to desktop comuputers. If a site is compromised then it's very likely that Google will detect this and unlsit your site until you remedy the problem. That means loss of traffic and therefore loss of business for your site. 
+Exploited sites may produce different content which could cause your listing to lose rank. They may also host malware which is served to desktop computers. If a site is compromised, then it's very likely that Google will detect this and unlist your site until you remedy the problem. That means loss of traffic and therefore loss of business for your site. 
 
 ## Performance
 
@@ -22,5 +22,5 @@ Load Impact profiled Docker against bare metal, meaning servers without any virt
 - http://blog.loadimpact.com/blog/wordpress-bare-metal-vs-wordpress-docker-performance-comparison/
 
 
-## Maintainace and Upgrading Containers
-See [Maintainace and Upgrading](/docker/Upgrading-Containers)
+##  Maintenance and Upgrading Containers
+See [Maintenance and Upgrading](/docker/Upgrading-Containers)
