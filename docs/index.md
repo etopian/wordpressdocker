@@ -234,8 +234,6 @@ Go to your site's dashboard and activate the Redis object cache.
 
 Settings > Redis and click the button to activate.
 
-![wp_redis.png](http://assets.dockerwordpress.com.s3.amazonaws.com/images/wp_redis.png)
-
 
 ## Modifying the image
 
@@ -371,9 +369,9 @@ php7-mysqli
 ```
 # Docker WordPress Control Panel
 
-[<img src="http://www.wordpressdocker.com/imgs/devoply.png">](http://www.devoply.com/)
+[<img src="https://www.wordpressdocker.com/imgs/devoply.png">](https://www.devoply.com/)
 
-DEVOPly is a hosting control panel which does everything taught in this tutorial automatically and much more, backups, staging/dev/prod, code editor, Github/Bitbucket deployments, DNS, WordPress Management. [http://www.devoply.com](http://www.devoply.com)!
+DEVOPly is a hosting control panel which does everything taught in this tutorial automatically and much more, backups, staging/dev/prod, code editor, Github/Bitbucket deployments, DNS, WordPress Management. [https://www.devoply.com](https://www.devoply.com)!
 
 
 

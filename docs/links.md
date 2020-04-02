@@ -11,7 +11,6 @@ Includes everything you need in a container including the database, gets heavy w
 
 Uses tatum WordPress container, now called Docker Cloud. Goes through the entire process.
 - <a rel="nofollow" href="https://www.digitalocean.com/community/tutorials/how-to-dockerise-and-deploy-multiple-wordpress-applications-on-ubuntu"></a>
- 
+
 - <a rel="nofollow" href="https://intercityup.com/blog/using-docker-to-host-this-wordpress-blog.html">https://intercityup.com/blog/using-docker-to-host-this-wordpress-blog.html</a>
-- <a rel="nofollow" href="http://www.sitepoint.com/how-to-use-the-official-docker-wordpress-image/">http://www.sitepoint.com/how-to-use-the-official-docker-wordpress-image/</a>
-- <a rel="nofollow" href="http://www.centurylinklabs.com/tutorials/wordpress-in-a-docker-container-on-the-centurylink-cloud/">http://www.centurylinklabs.com/tutorials/wordpress-in-a-docker-container-on-the-centurylink-cloud/</a>
+- <a rel="nofollow" href="https://www.sitepoint.com/how-to-use-the-official-docker-wordpress-image/">https://www.sitepoint.com/how-to-use-the-official-docker-wordpress-image/</a>
