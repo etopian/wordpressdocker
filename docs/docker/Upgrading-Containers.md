@@ -68,3 +68,11 @@ Remove the nonworking container:
 ```code
 docker rm mysite_com_notworking
 ```
+
+# The easiest Docker Way
+
+Edit `wp-config.php` file by add `define('FS_METHOD','direct');` to the end of file.
+
+Save the file and run update. From now, you don't need FTP server to update your WordPress.
+
+**Remember! Before update make a backup.** 
